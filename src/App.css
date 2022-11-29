@@ -1,0 +1,43 @@
+.section {
+  margin: 0 auto;
+  padding: 5px;
+  width: 800px;
+  background-color: rgb(184, 184, 0);
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+}
+table {
+  margin: auto;
+  width: 700px;
+  background-color: antiquewhite;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+th {
+  height: 36px;
+  background-color: rgb(0, 168, 112);
+}
+tr {
+  height: 24px;
+  background-color: aquamarine;
+}
+.category {
+  width: 100px;
+}
+.name {
+  width: 500px;
+}
+.price{
+  width: 60px;
+}
+.productName {
+  padding-left: 10px;
+  text-align: left;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 40px;
+  font-weight: 700;
+}
