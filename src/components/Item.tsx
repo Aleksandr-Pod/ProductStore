@@ -10,7 +10,7 @@ export const Item = ({product}: IProps) => {
             <td>{product.category}</td>
             <td className='productName'>{product.name}</td>
             <td>{product.price}</td>
+            <td>{product.quantity}</td>
         </tr>
-
     )
 }

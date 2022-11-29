@@ -8,18 +8,17 @@ interface IProps {
 export const Products = ({ products }: IProps) => {
 
   return (
-    <>
-      <table>
-        <tr>
-          <th className='category'>category</th>
-          <th className='name'>name</th>
-          <th className='price'>price</th>
-        </tr>
-      
-        { products.map( item => (
-          <Item key={item.id} product={item} />
-        ))}
-      </table>
-    </>
+    <table>
+      <tr>
+        <th className='category'>category</th>
+        <th className='name'>name</th>
+        <th className='price'>price</th>
+        <th className="qtty">quantity</th>
+      </tr>
+    
+      { products.map( item => (
+        <Item key={item.id} product={item} />
+      ))}
+    </table>
   )
 } 

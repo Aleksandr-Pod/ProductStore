@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { InputForm } from './InputForm';
 
 interface IProps {
   onEsc: (evt: {code: string}) =>  void;
@@ -16,10 +17,10 @@ export const Modal = ({ onEsc, handleOverlayClick }: IProps) => {
       }
     }, [onEsc])
     return createPortal(
-        <div className="Overlay" onClick={ handleOverlayClick }>
-            <div className="Modal">
-                
-            </div>
-        </div>, modalRoot
+      <div className="Overlay" onClick={ handleOverlayClick }>
+        <div className="Modal">
+            <InputForm/>
+        </div>
+      </div>, modalRoot
     )
 }
