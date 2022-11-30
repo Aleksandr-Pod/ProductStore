@@ -2,12 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import { IProductsProps } from '../interfaces';
 import type { RootState } from './store';
 
-const initialState = {
+const initialState: IProductsProps = {
   products: []
-} as IProductsProps
+}
 
 export const productsSlice = createSlice({
-  name: 'products',
+  name: 'Store',
   initialState,
   reducers: {
     loadProduct(state, {payload}) { state.products = payload },

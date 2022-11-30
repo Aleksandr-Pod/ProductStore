@@ -9,13 +9,13 @@ import { loadProduct } from './Redux/productsSlice';
 
 
 export const App = () => {
-  const {products} = useAppSelector(state => state.products);
+  const { products } = useAppSelector(state => state.products);
   const dispatch = useAppDispatch();
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
-    // const productList = await getProducts();
-    // dispatch(productList);
+    // const data = getProducts();
+    // dispatch(loadProduct(data));
     fetch ('http://localhost:3010/products')
     .then(res => res.json())
     .then(data => {
@@ -24,7 +24,7 @@ export const App = () => {
     })
     .catch(err => console.log(err));
 
-  }, []);
+  }, [dispatch]);
 
   const handleAddProduct = () => {
     console.log("add product");
@@ -43,9 +43,9 @@ export const App = () => {
     <div>
       <Section title="Products Store">
         <button className="addProdBtn" onClick={handleAddProduct}>+</button>
-        <Products products={products}/>
+        {products && <Products products={products}/>}
       </Section>
-      {showModal && <Modal handleOverlayClick={handleOverlayClick} onEsc={handleEsc}/>}
+      {showModal && <Modal handleOverlayClick={handleOverlayClick} onEsc={handleEsc} setShowModal={setShowModal}/>}
     </div>
   );
 }

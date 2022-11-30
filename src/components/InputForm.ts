@@ -4,12 +4,17 @@
 // import { InputItem } from "./InputForm.styled";
 // other libs
 import { nanoid } from 'nanoid';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useAppDispatch } from '../hooks';
+import { addProduct } from '../Redux/productsSlice';
+import { IProduct } from '../interfaces';
 
-export function InputForm () {
-  // const products = useSelector(store => store.contacts.items);
-  // const dispatch = useDispatch();
+interface IProps {
+  showModal: (arg: boolean) => void
+}
+export const InputForm = ({ showModal }: IProps) => {
+  const dispatch = useAppDispatch();
 
   const addProductSchema = Yup.object().shape({
     date: Yup.string().required('date is required'),
@@ -22,14 +27,11 @@ export function InputForm () {
     quantity: Yup.number().positive().min(0, '0 is minimum').max(999, '999 is maximum')
   });
 
-  const onSubmit = (values, action) => {
-    // const equalName = products.find(el => (el.name.toLowerCase() === values.name.toLowerCase()));
-    // if (equalName) return alert(equalName.name + " is already in contacts");
+  const onSubmit = ({date, category, name, price, quantity}: IProduct, action) => {
 
-    values.id = nanoid();
-    console.log(values);
-    // addProducts(values);
+    dispatch(addProduct({id: nanoid(), date, category, name, price, quantity}));
     action.resetForm();
+    showModal(false);
   }
   return (
     <Formik initialValues={{

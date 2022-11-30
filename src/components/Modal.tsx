@@ -5,10 +5,11 @@ import { InputForm } from './InputForm';
 interface IProps {
   onEsc: (evt: {code: string}) =>  void;
   handleOverlayClick: (evt: { target: any; currentTarget: any; }) => void;
+  setShowModal: () => boolean;
 }
 const modalRoot = document.getElementById('modal-root')!;
 
-export const Modal = ({ onEsc, handleOverlayClick }: IProps) => { 
+export const Modal = ({ onEsc, handleOverlayClick, setShowModal }: IProps) => { 
 
     useEffect(() => {
       window.document.addEventListener('keydown', onEsc);
@@ -19,7 +20,7 @@ export const Modal = ({ onEsc, handleOverlayClick }: IProps) => {
     return createPortal(
       <div className="Overlay" onClick={ handleOverlayClick }>
         <div className="Modal">
-            <InputForm/>
+            <InputForm showModal={setShowModal}/>
         </div>
       </div>, modalRoot
     )
