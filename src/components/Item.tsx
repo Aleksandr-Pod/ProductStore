@@ -1,12 +1,10 @@
-import { IProduct } from '../interfaces';
+import { IItemProps } from '../interfaces';
 
-interface IProps {
-    product: IProduct
-}
-export const Item = ({product}: IProps) => {
+export const Item = ({product}: IItemProps) => {
 
     return (
         <tr>
+            <td>{product.date.slice(0, 19).replace("T", " ")}</td>
             <td>{product.category}</td>
             <td className='productName'>{product.name}</td>
             <td>{product.price}</td>

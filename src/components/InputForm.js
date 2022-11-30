@@ -4,11 +4,23 @@
 // import { InputItem } from "./InputForm.styled";
 // other libs
 import { nanoid } from 'nanoid';
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 
 export function InputForm () {
   // const products = useSelector(store => store.contacts.items);
   // const dispatch = useDispatch();
+
+  const addProductSchema = Yup.object().shape({
+    date: Yup.string().required('date is required'),
+    name: Yup.string().required('name is required'),
+    category: Yup.string().required('if unknown press -unsorted-'),
+    price: Yup.number().positive()
+      .min(0, '0 is minimum')
+      .max(99999, '99999 is maximum')
+      .required('if unknown press 0'),
+    quantity: Yup.number().positive().min(0, '0 is minimum').max(999, '999 is maximum')
+  });
 
   const onSubmit = (values, action) => {
     // const equalName = products.find(el => (el.name.toLowerCase() === values.name.toLowerCase()));
@@ -21,37 +33,35 @@ export function InputForm () {
   }
   return (
     <Formik initialValues={{
+      date: new Date().toISOString().slice(0, 19),
       category: "",
       name: "",
       price: 0,
       quantity: 0
-    }} onSubmit={onSubmit}>
+    }} validationSchema={addProductSchema} onSubmit={onSubmit}>
       <Form>
+      <label>date
+          <Field type="text" name="date"
+            required
+          />
+        </label>
         <label>category
-          <input type="text" name="category"
-            // pattern="^[a-zA-Zа-яА-Я]{10}$"
-            // title="Category should contain only letters and no more than 10 symbols "
+          <Field type="text" name="category"
             required
           />
         </label>
         <label>name
-          <input type="text" name="name"
-            // pattern="^[a-zA-Zа-яА-Я]{20}$"
-            // title="Name should contain letters and numbers and no more than 20 symbols"
+          <Field type="text" name="name"
             required
           />
         </label>
         <label>price
-          <input type="number" name="price"
-            // pattern="^[1-9]{5}$"
-            // title="Price should contain only 5 digits"
+          <Field type="number" name="price"
             required
           />
         </label>
         <label>quantity
-          <input type="number" name="quantity"
-            // pattern="^[1-9]{5}$"
-            // title="Quantity should contain only 5 digits"
+          <Field type="number" name="quantity"
             required
           />
         </label>
