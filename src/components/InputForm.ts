@@ -1,8 +1,3 @@
-// import { useSelector, useDispatch } from 'react-redux';
-
-// styled components
-// import { InputItem } from "./InputForm.styled";
-// other libs
 import { nanoid } from 'nanoid';
 import { Formik, Form, Field, useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -34,40 +29,33 @@ export const InputForm = ({ showModal }: IProps) => {
     showModal(false);
   }
   return (
-    <Formik initialValues={{
-      date: new Date().toISOString().slice(0, 19),
-      category: "",
-      name: "",
-      price: 0,
-      quantity: 0
-    }} validationSchema={addProductSchema} onSubmit={onSubmit}>
+    <Formik
+      initialValues={{
+        date: new Date().toISOString().slice(0, 19),
+        category: "",
+        name: "",
+        price: 0,
+        quantity: 0
+      }}
+      validationSchema={addProductSchema}
+      onSubmit={onSubmit}>
       <Form>
-      <label>date
-          <Field type="text" name="date"
-            required
-          />
+        <label>date
+          <Field type="text" name="date" required />
         </label>
         <label>category
-          <Field type="text" name="category"
-            required
-          />
+          <Field type="text" name="category" required />
         </label>
         <label>name
-          <Field type="text" name="name"
-            required
-          />
+          <Field type="text" name="name" required />
         </label>
         <label>price
-          <Field type="number" name="price"
-            required
-          />
+          <Field type="number" name="price" required />
         </label>
         <label>quantity
-          <Field type="number" name="quantity"
-            required
-          />
+          <Field type="number" name="quantity" required />
         </label>
-        <button type="submit">Add product</button>`
+        <button type="submit">Add product</button>
       </Form>
     </Formik>
   )
