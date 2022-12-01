@@ -11,11 +11,9 @@ import { loadProduct } from './Redux/productsSlice';
 export const App = () => {
   const { products } = useAppSelector(state => state.products);
   const dispatch = useAppDispatch();
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [ showModal, setShowModal ] = useState<boolean>(false);
 
   useEffect(() => {
-    // const data = getProducts();
-    // dispatch(loadProduct(data));
     fetch ('http://localhost:3010/products')
     .then(res => res.json())
     .then(data => {
@@ -25,11 +23,6 @@ export const App = () => {
     .catch(err => console.log(err));
 
   }, [dispatch]);
-
-  const handleAddProduct = () => {
-    console.log("add product");
-    setShowModal(true);
-  }
   
   const handleOverlayClick = (evt: { target: any; currentTarget: any; }) => {
     if (evt.target === evt.currentTarget) setShowModal(false);
@@ -42,10 +35,14 @@ export const App = () => {
   return (
     <div>
       <Section title="Products Store">
-        <button className="addProdBtn" onClick={handleAddProduct}>+</button>
-        {products && <Products products={products}/>}
+        <button className="addProdBtn" onClick={() => setShowModal(true)}>+</button>
+        { products && <Products products={products}/> }
       </Section>
-      {showModal && <Modal handleOverlayClick={handleOverlayClick} onEsc={handleEsc} setShowModal={setShowModal}/>}
+      { showModal && <Modal
+        handleOverlayClick={handleOverlayClick}
+        onEsc={handleEsc}
+        // @ts-ignore
+        setShowModal={setShowModal}/> }
     </div>
   );
 }
