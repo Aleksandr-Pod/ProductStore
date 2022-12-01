@@ -1,0 +1,68 @@
+{
+  "products": [
+    {
+      "date": "2022-11-29T11:32:121Z",
+      "name": "bread",
+      "category": "food",
+      "price": 25,
+      "quantity": 42,
+      "id": 4
+    },
+    {
+      "date": "2022-11-29T12:15:126Z",
+      "name": "apple juice",
+      "category": "food",
+      "price": 50,
+      "quantity": 20,
+      "id": 3
+    },
+    {
+      "date": "2022-11-29T16:32:985Z",
+      "name": "orange juice",
+      "category": "food",
+      "price": 60,
+      "quantity": 13,
+      "id": 2
+    },
+    {
+      "date": "2022-11-29T19:52:111Z",
+      "name": "ball",
+      "category": "toy",
+      "price": 340,
+      "quantity": 4,
+      "id": 1
+    },
+    {
+      "date": "2022-12-01T06:11:49",
+      "category": "Sport",
+      "name": "Bicycle",
+      "price": 23000,
+      "quantity": 2,
+      "id": "iZvqt2pj7DLaUD-wKp8YN"
+    },
+    {
+      "date": "2022-12-01T06:35:04",
+      "category": "musician",
+      "name": "drums",
+      "price": 15000,
+      "quantity": 1,
+      "id": "7otZvGvOCIxDdsTqpwnem"
+    },
+    {
+      "date": "2022-12-01T06:35:41",
+      "category": "musician",
+      "name": "guitar 1",
+      "price": 9000,
+      "quantity": 2,
+      "id": "Xk6lPGGuolBr-rEuUsHDP"
+    },
+    {
+      "date": "2022-12-01T06:37:55",
+      "category": "unsorted",
+      "name": "play cards",
+      "price": 400,
+      "quantity": 4,
+      "id": "MTa1JNrDbb217TNLrEQk_"
+    }
+  ]
+}
